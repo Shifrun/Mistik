@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Donasi extends Model{
   protected $fillable = [
-    'id','kategori'
+    'id','donatur', 'kontak'
   ];
 }
 

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\laporan;
-use App\kategori;
+use DB;
+use App\Laporan;
+use App\Kategori;
+use App\Pengungsi;
 use Illuminate\Http\Request;
 
 class MasterController extends Controller
@@ -28,5 +30,19 @@ class MasterController extends Controller
         // echo $request;
         // die;
         return redirect()->route('/')->with('success','Data berhasil ditambahkan.');
+    }
+
+    public function map(){
+      $markers = Pengungsi::all();
+
+      $markers = DB::table('pengungsis')
+                    ->join('laporans','laporans.lokasi','=','pengungsis.id')
+                    ->join('kategoris','laporans.kategori_kebutuhan','=','kategoris.id')
+                    ->select('pengungsis.*','laporans.*','kategoris.*')
+                    ->get();
+
+      // dd($markers);
+
+      return view('pengungsi.map', compact('markers'));
     }
 }

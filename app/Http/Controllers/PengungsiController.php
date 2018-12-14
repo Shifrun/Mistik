@@ -40,7 +40,12 @@ class PengungsiController extends Controller
     {
         //
         $request->validate([
-          'kategori' => 'required'
+          'nama_pengungsian' => 'required',
+          'jumlah_pengungsi' => 'required',
+          'alamat' => 'required',
+          'daerah' => 'required',
+          'lat' => 'required',
+          'lng' => 'required'
         ]);
 
         Pengungsi::create($request->all());
@@ -81,7 +86,12 @@ class PengungsiController extends Controller
     {
         //
         $request->validate([
-          'kategori' => 'required'
+          'nama_pengungsian' => 'required',
+          'jumlah_pengungsi' => 'required',
+          'alamat' => 'required',
+          'daerah' => 'required',
+          'lat' => 'required',
+          'lng' => 'required'
         ]);
 
         $pengungsi->update($request->all());

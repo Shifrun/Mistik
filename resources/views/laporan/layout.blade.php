@@ -44,7 +44,7 @@
             </a>
           </li>
           <li class="nav-item  ">
-            <a class="nav-link" href="#0">
+            <a class="nav-link" href="/pengungsi">
               <i class="material-icons">supervisor_account</i>
               <p>Pengungsi</p>
             </a>
@@ -56,7 +56,7 @@
             </a>
           </li>
           <li class="nav-item  ">
-            <a class="nav-link" href="#0">
+            <a class="nav-link" href="/donasi">
               <i class="material-icons">how_to_vote</i>
               <p>Donasi</p>
             </a>
@@ -68,7 +68,7 @@
             </a>
           </li>
           <li class="nav-item  ">
-            <a class="nav-link" href="#0">
+            <a class="nav-link" href="/map">
               <i class="material-icons">map</i>
               <p>Peta</p>
             </a>

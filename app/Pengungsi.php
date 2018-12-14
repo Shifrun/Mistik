@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pengungsi extends Model{
   protected $fillable = [
-    'id','jumlah_pengungsi','daerah'
+    'id','nama_pengungsian','jumlah_pengungsi', 'alamat', 'daerah', 'lat', 'lng'
   ];
 }
 

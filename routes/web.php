@@ -19,10 +19,12 @@ Route::get('/', function () { return view('home'); });
 Route::resource('logistik','LogistikController');
 Route::resource('laporan','LaporanController');
 Route::resource('kategori','KategoriController');
+Route::resource('pengungsi','PengungsiController');
 // Route::post('laporan.store2', 'LaporanController@store2');
 Auth::routes();
 
 Route::post('/laporkan/proses', 'LaporanController@store2');
 Route::get('laporkan', 'MasterController@laporan');
+Route::get('map', 'MasterController@map');
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -43,8 +43,8 @@
               <p>Laporan</p>
             </a>
           </li>
-          <li class="nav-item  ">
-            <a class="nav-link" href="/pengungsi">
+          <li class="nav-item">
+            <a class="nav-link active" href="/pengungsi">
               <i class="material-icons">supervisor_account</i>
               <p>Pengungsi</p>
             </a>
@@ -62,7 +62,7 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link active" href="/kategori">
+            <a class="nav-link" href="/kategori">
               <i class="material-icons">storage</i>
               <p>Kategori</p>
             </a>
