@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\laporan;
-use App\kategori;
+use App\Laporan;
+use App\Kategori;
 use Illuminate\Http\Request;
 
 class MasterController extends Controller
