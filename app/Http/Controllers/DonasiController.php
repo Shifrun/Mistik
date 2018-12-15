@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\Donasi;
+use App\User;
 use Illuminate\Http\Request;
 
 class DonasiController extends Controller
@@ -15,6 +17,10 @@ class DonasiController extends Controller
     public function index()
     {
         $donasi = donasi::latest()->paginate(5);
+        $donasi = DB::table('donasis')
+                      ->join('users','users.id','=','donasis.id')
+                      ->select('donasis.donatur','users.name as donatur')
+                      ->paginate('5');
 
         return view('donasi.index',compact('donasi'))->with('i',(request()->input('page',1) - 1) * 5);
     }
@@ -40,7 +46,8 @@ class DonasiController extends Controller
     {
         //
         $request->validate([
-          'donasi' => 'required'
+          'donatur' => 'required',
+          'kontak'  => 'required',
         ]);
 
         Donasi::create($request->all());
@@ -81,7 +88,8 @@ class DonasiController extends Controller
     {
         //
         $request->validate([
-          'donasi' => 'required'
+          'donatur' => 'required',
+          'kontak'  => 'required',
         ]);
 
         $donasi->update($request->all());

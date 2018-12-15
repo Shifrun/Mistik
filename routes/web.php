@@ -20,6 +20,7 @@ Route::resource('logistik','LogistikController');
 Route::resource('laporan','LaporanController');
 Route::resource('kategori','KategoriController');
 Route::resource('pengungsi','PengungsiController');
+Route::resource('donasi','DonasiController');
 // Route::post('laporan.store2', 'LaporanController@store2');
 Auth::routes();
 
