@@ -17,11 +17,7 @@ class DonasiController extends Controller
     public function index()
     {
         $donasi = donasi::latest()->paginate(5);
-        $donasi = DB::table('donasis')
-                      ->join('users','users.id','=','donasis.id')
-                      ->select('donasis.donatur','users.name as donatur')
-                      ->paginate('5');
-
+        
         return view('donasi.index',compact('donasi'))->with('i',(request()->input('page',1) - 1) * 5);
     }
 
