@@ -49,7 +49,7 @@
               <p>Logistik</p>
             </a>
           </li>
-          <li class="nav-item  ">
+          <li class="nav-item active ">
             <a class="nav-link" href="/map">
               <i class="material-icons">map</i>
               <p>Peta</p>
@@ -97,7 +97,7 @@
                 <p>Donasi</p>
               </a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item ">
               <a class="nav-link" href="/kategori">
                 <i class="material-icons">storage</i>
                 <p>Kategori</p>

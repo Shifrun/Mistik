@@ -28,7 +28,12 @@
                   <p class="card-category"> Berikut merupakan data laporan</p>
               </div>
               <div class="col-md-3 pull-right">
-                <a class="btn btn-success" href="{{ route('laporan.create') }}"> Tambah Laporan</a>
+                @guest
+                @else
+                  @if(Auth::user()->user_type=='BPBD')
+                  <a class="btn btn-success" href="{{ route('laporan.create') }}"> Tambah Laporan</a>
+                  @endif
+                @endguest
               </div>
             </div>
           </div>
@@ -57,10 +62,15 @@
                       <td>
                           <form action="{{ route('laporan.destroy',$product->id) }}" method="POST">
                               <a class="btn btn-info" href="{{ route('laporan.show',$product->id) }}"><i class="material-icons">search</i></a>
+                              @guest
+                              @else
+                                @if(Auth::user()->user_type=='BPBD')
                               <a class="btn btn-primary" href="{{ route('laporan.edit',$product->id) }}"><i class="material-icons">edit</i></a>
                               @csrf
                               @method('DELETE')
                               <button type="submit" class="btn btn-danger"><i class="material-icons">delete</i></button>
+                              @endif
+                            @endguest
                           </form>
                       </td>
                   </tr>

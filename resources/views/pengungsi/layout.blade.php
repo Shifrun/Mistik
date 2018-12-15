@@ -37,16 +37,10 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item ">
-            <a class="nav-link active" href="/laporan">
-              <i class="material-icons">description</i>
-              <p>Laporan</p>
-            </a>
-          </li>
           <li class="nav-item">
-            <a class="nav-link active" href="/pengungsi">
-              <i class="material-icons">supervisor_account</i>
-              <p>Pengungsi</p>
+            <a class="nav-link" href="/dasbor">
+              <i class="material-icons">insert_chart</i>
+              <p>Dasbor</p>
             </a>
           </li>
           <li class="nav-item">
@@ -56,24 +50,61 @@
             </a>
           </li>
           <li class="nav-item  ">
-            <a class="nav-link" href="/donasi">
-              <i class="material-icons">how_to_vote</i>
-              <p>Donasi</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="/kategori">
-              <i class="material-icons">storage</i>
-              <p>Kategori</p>
-            </a>
-          </li>
-          <li class="nav-item  ">
             <a class="nav-link" href="/map">
               <i class="material-icons">map</i>
               <p>Peta</p>
             </a>
           </li>
-          <!-- your sidebar here -->
+          @guest
+
+          @else
+            @if(Auth::user()->user_type=='Relawan')
+            <li class="nav-item ">
+              <a class="nav-link" href="/laporan">
+                <i class="material-icons">description</i>
+                <p>Laporan</p>
+              </a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link " href="/pengungsi">
+                <i class="material-icons">supervisor_account</i>
+                <p>Pengungsi</p>
+              </a>
+            </li>
+            @elseif(Auth::user()->user_type=='Donatur')
+            <li class="nav-item  ">
+              <a class="nav-link" href="/donasi">
+                <i class="material-icons">how_to_vote</i>
+                <p>Donasi</p>
+              </a>
+            </li>
+            @elseif(Auth::user()->user_type=='BPBD')
+            <li class="nav-item ">
+              <a class="nav-link" href="/laporan">
+                <i class="material-icons">description</i>
+                <p>Laporan</p>
+              </a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link " href="/pengungsi">
+                <i class="material-icons">supervisor_account</i>
+                <p>Pengungsi</p>
+              </a>
+            </li>
+            <li class="nav-item  ">
+              <a class="nav-link" href="/donasi">
+                <i class="material-icons">how_to_vote</i>
+                <p>Donasi</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/kategori">
+                <i class="material-icons">storage</i>
+                <p>Kategori</p>
+              </a>
+            </li>
+            @endif
+          @endguest
         </ul>
       </div>
     </div>
@@ -99,53 +130,78 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/laporan" class="nav-link" role="button">
-                  <i class="ni ni-collection d-lg-none"></i>
-                  <span class="nav-link-inner--text">Laporan</span>
-                </a>
-              </li>
-              <li class="nav-item">
                 <a href="/logistik" class="nav-link" role="button">
                   <i class="ni ni-collection d-lg-none"></i>
                   <span class="nav-link-inner--text">Stok</span>
                 </a>
               </li>
+              @guest
               <li class="nav-item">
-                <a href="/donasi  " class="nav-link" role="button">
+                  <a href="{{ route('login') }}" class="btn btn-neutral btn-icon">
+                    <span class="btn-inner--icon">
+                      <i class="fa fa-user-circle mr-2"></i>
+                    </span>
+                    <span class="nav-link-inner--text">{{ __('Login') }}</span>
+                  </a>
+              </li>
+              @else
+                @if(Auth::user()->user_type=='Relawan')
+                <li class="nav-item">
+                  <a href="/laporan" class="nav-link" role="button">
+                    <i class="ni ni-collection d-lg-none"></i>
+                    <span class="nav-link-inner--text">Laporan</span>
+                  </a>
+                </li>
+                @elseif(Auth::user()->user_type=='Donatur')
+                <li class="nav-item">
+                  <a href="/donasi  " class="nav-link" role="button">
+                    <i class="ni ni-collection d-lg-none"></i>
+                    <span class="nav-link-inner--text">Donasi</span>
+                  </a>
+                </li>
+                @elseif(Auth::user()->user_type=='BPBD')
+                <li class="nav-item">
+                  <a href="/laporan" class="nav-link" role="button">
+                    <i class="ni ni-collection d-lg-none"></i>
+                    <span class="nav-link-inner--text">Laporan</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/donasi  " class="nav-link" role="button">
+                    <i class="ni ni-collection d-lg-none"></i>
+                    <span class="nav-link-inner--text">Donasi</span>
+                  </a>
+                </li>
+                @endif
+              <li class="nav-item">
+                <a href="/tentang" class="nav-link" role="button">
                   <i class="ni ni-collection d-lg-none"></i>
-                  <span class="nav-link-inner--text">Donasi</span>
+                  <span class="nav-link-inner--text">Tentang Kami</span>
                 </a>
               </li>
-              @guest
-                  <li class="nav-item">
-                      <a href="{{ route('login') }}" class="btn btn-neutral btn-icon">
-                        <span class="btn-inner--icon">
-                          <i class="fa fa-user-circle mr-2"></i>
-                        </span>
-                        <span class="nav-link-inner--text">{{ __('Login') }}</span>
-                      </a>
-                  </li>
-              @else
-                  <li class="nav-item dropdown">
-                      <a id="navbarDropdown" class="btn btn-info btn-icon dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        <span class="btn-inner--icon">
-                          <i class="fa fa-user-circle mr-2"></i>
-                        </span>
-                          {{ Auth::user()->name }} <span class="caret"></span>
+              <li class="nav-item dropdown">
+                  <a id="navbarDropdown" class="btn btn-neutral btn-icon dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    <span class="btn-inner--icon">
+                      <i class="fa fa-user-circle mr-2"></i>
+                    </span>
+                      {{ Auth::user()->name }} <span class="caret"></span>
+                  </a>
+
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">
+                        Status pengguna: <b>{{ Auth::user()->user_type }}</b>
+                    </a>
+                      <a class="dropdown-item" href="{{ route('logout') }}"
+                         onclick="event.preventDefault();
+                                       document.getElementById('logout-form').submit();">
+                          {{ __('Logout') }}
                       </a>
 
-                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="{{ route('logout') }}"
-                             onclick="event.preventDefault();
-                                           document.getElementById('logout-form').submit();">
-                              {{ __('Logout') }}
-                          </a>
-
-                          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                              @csrf
-                          </form>
-                      </div>
-                  </li>
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                          @csrf
+                      </form>
+                  </div>
+              </li>
               @endguest
               <!-- your navbar here -->
             </ul>

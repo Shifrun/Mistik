@@ -28,7 +28,12 @@
                   <p class="card-category"> Berikut merupakan data pengungsi</p>
               </div>
               <div class="col-md-3 pull-right">
-                <a class="btn btn-success" href="{{ route('pengungsi.create') }}"> Tambah Pengungsian</a>
+                @guest
+                @else
+                  @if(Auth::user()->user_type=='BPBD')
+                  <a class="btn btn-success" href="{{ route('pengungsi.create') }}"> Tambah Pengungsian</a>
+                  @endif
+                @endguest
               </div>
             </div>
           </div>
@@ -57,10 +62,15 @@
                       <td>
                           <form action="{{ route('pengungsi.destroy',$product->id) }}" method="POST">
                               <a class="btn btn-info" href="{{ route('pengungsi.show',$product->id) }}"><i class="material-icons">search</i></a>
+                              @guest
+                              @else
+                                @if(Auth::user()->user_type=='BPBD')
                               <a class="btn btn-primary" href="{{ route('pengungsi.edit',$product->id) }}"><i class="material-icons">edit</i></a>
                               @csrf
                               @method('DELETE')
                               <button type="submit" class="btn btn-danger"><i class="material-icons">delete</i></button>
+                              @endif
+                            @endguest
                           </form>
                       </td>
                   </tr>

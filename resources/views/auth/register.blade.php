@@ -24,6 +24,16 @@
               </div>
               <form method="POST" action="{{ route('register') }}">
                   @csrf
+                  @if ($errors->any())
+                      <div class="alert alert-danger">
+                          <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                          <ul>
+                              @foreach ($errors->all() as $error)
+                                  <li>{{ $error }}</li>
+                              @endforeach
+                          </ul>
+                      </div>
+                  @endif
                 <div class="form-group">
                   <div class="input-group input-group-alternative mb-3">
                     <div class="input-group-prepend">
@@ -80,6 +90,24 @@
                     @endif
                   </div>
                 </div>
+                <div class="form-group">
+                  <p>Daftar sebagai</p>
+                  <div class="row">
+                    <div class="custom-control custom-radio mb-3 col-md-4">
+                      <input name="user_type" class="custom-control-input" id="customRadio1" type="radio" value="Relawan">
+                      <label class="custom-control-label" for="customRadio1">
+                        <span>Relawan</span>
+                      </label>
+                    </div>
+                    <div class="custom-control custom-radio mb-3 col-md-4">
+                      <input name="user_type" class="custom-control-input" id="customRadio2" type="radio" value="Donatur">
+                      <label class="custom-control-label" for="customRadio2">
+                        <span>Donatur</span>
+                      </label>
+                    </div>
+                  </div>
+
+                </div>
                 <!-- <div class="text-muted font-italic">
                   <small>password strength:
                     <span class="text-success font-weight-700">strong</span>
@@ -94,6 +122,25 @@
               </form>
             </div>
             <div class="card-header bg-white pb-5">
+              <div class="text-muted text-center mb-3">
+                <small>Sistem ini didukung oleh</small>
+              </div>
+              <div class="btn-wrapper text-center">
+                <a href="#" class="btn btn-neutral btn-icon">
+                  <span class="btn-inner--icon">
+                    <img src="../img/icons/common/bitbucket.svg">
+                  </span>
+                  <span class="btn-inner--text">Bitbucket</span>
+                </a>
+                <a href="#" class="btn btn-neutral btn-icon">
+                  <span class="btn-inner--icon">
+                    <img src="../img/icons/common/laravel.svg">
+                  </span>
+                  <span class="btn-inner--text">Laravel</span>
+                </a>
+              </div>
+            </div>
+            <!-- <div class="card-header bg-white pb-5">
               <div class="text-muted text-center mb-3">
                 <small>Atau dengan akun</small>
               </div>
@@ -111,7 +158,7 @@
                   <span class="btn-inner--text">Google</span>
                 </a>
               </div>
-            </div>
+            </div> -->
           </div>
           <div class="row mt-3">
             <div class="col-12 text-center">

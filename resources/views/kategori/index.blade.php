@@ -28,7 +28,12 @@
                   <p class="card-category"> Berikut merupakan data kategori logistik</p>
               </div>
               <div class="col-md-3 pull-right">
-                <a class="btn btn-success" href="{{ route('kategori.create') }}"> Tambah Kategori</a>
+                @guest
+                @else
+                  @if(Auth::user()->user_type=='BPBD')
+                  <a class="btn btn-success" href="{{ route('kategori.create') }}"> Tambah Kategori</a>
+                  @endif
+                @endguest
               </div>
             </div>
           </div>
@@ -51,10 +56,15 @@
                       <td>
                           <form action="{{ route('kategori.destroy',$product->id) }}" method="POST">
                               <a class="btn btn-info" href="{{ route('kategori.show',$product->id) }}"><i class="material-icons">search</i></a>
+                              @guest
+                              @else
+                                @if(Auth::user()->user_type=='BPBD')
                               <a class="btn btn-primary" href="{{ route('kategori.edit',$product->id) }}"><i class="material-icons">edit</i></a>
                               @csrf
                               @method('DELETE')
                               <button type="submit" class="btn btn-danger"><i class="material-icons">delete</i></button>
+                              @endif
+                            @endguest
                           </form>
                       </td>
                   </tr>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 0 73.000002 63.27"
+   version="1.1"
+   id="svg39"
+   sodipodi:docname="bitbucket.svg"
+   width="73"
+   height="63.27"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)">
+  <metadata
+     id="metadata43">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Bitbucket-blue</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1843"
+     inkscape:window-height="1053"
+     id="namedview41"
+     showgrid="false"
+     inkscape:zoom="8.3941324"
+     inkscape:cx="71.578313"
+     inkscape:cy="34.287026"
+     inkscape:window-x="68"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="Blue" />
+  <defs
+     id="defs9">
+    <style
+       id="style2">.cls-1{fill:#253858;}.cls-2{fill:none;}.cls-3{fill:#2684ff;}.cls-4{fill:url(#New_Gradient_Swatch_1);}</style>
+    <linearGradient
+       id="New_Gradient_Swatch_1"
+       x1="64.010002"
+       y1="30.27"
+       x2="32.990002"
+       y2="54.48"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.1068753,0,0,1.0933854,1.90885,-5.8263342)">
+      <stop
+         offset="0.18"
+         stop-color="#0052cc"
+         id="stop4" />
+      <stop
+         offset="1"
+         stop-color="#2684ff"
+         id="stop6" />
+    </linearGradient>
+  </defs>
+  <title
+     id="title11">Bitbucket-blue</title>
+  <g
+     id="Layer_2"
+     data-name="Layer 2"
+     transform="translate(0,-1.8310547e-6)">
+    <g
+       id="Blue">
+      <polygon
+         class="cls-2"
+         points="21.23,25.12 24.7,43.51 37.75,43.51 40.9,25.12 "
+         id="polygon31"
+         transform="matrix(1.1068753,0,0,1.0933854,1.90885,-5.8263342)"
+         style="fill:none" />
+      <path
+         class="cls-3"
+         d="M 4.1226006,1.0182588 A 2.2137506,2.1867709 0 0 0 1.90885,3.5549131 L 11.306221,59.908 a 3.0107009,2.9740084 0 0 0 2.944289,2.481984 h 45.083031 a 2.2137506,2.1867709 0 0 0 2.213751,-1.836887 L 70.944664,3.565847 A 2.2137506,2.1867709 0 0 0 68.730912,1.0291927 Z M 43.693392,41.746867 H 29.304014 L 25.407812,21.639508 H 47.18005 Z"
+         id="path33"
+         inkscape:connector-curvature="0"
+         style="fill:#2684ff;stroke-width:1.10010982" />
+      <path
+         class="cls-4"
+         d="M 67.956099,21.639508 H 47.18005 L 43.693392,41.746867 H 29.304014 L 12.313478,61.668351 a 2.9996321,2.9630746 0 0 0 1.937032,0.721633 h 45.094099 a 2.2137506,2.1867709 0 0 0 2.213751,-1.836887 z"
+         id="path35"
+         style="fill:url(#New_Gradient_Swatch_1);stroke-width:1.10010982"
+         inkscape:connector-curvature="0" />
+    </g>
+  </g>
+</svg>

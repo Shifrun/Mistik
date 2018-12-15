@@ -53,7 +53,7 @@
           <div class="col-lg-12">
             <div class="row row-grid">
               <div class="col-lg-4">
-                <div class="card card-lift--hover shadow border-0">
+                <div class="card shadow border-0">
                   <div class="card-body py-5">
                     <div class="icon icon-shape icon-shape-primary rounded-circle mb-4">
                       <i class="ni ni-check-bold"></i>
@@ -70,7 +70,7 @@
                 </div>
               </div>
               <div class="col-lg-4">
-                <div class="card card-lift--hover shadow border-0">
+                <div class="card shadow border-0">
                   <div class="card-body py-5">
                     <div class="icon icon-shape icon-shape-success rounded-circle mb-4">
                       <i class="ni ni-istanbul"></i>
@@ -86,7 +86,7 @@
                 </div>
               </div>
               <div class="col-lg-4">
-                <div class="card card-lift--hover shadow border-0">
+                <div class="card shadow border-0">
                   <div class="card-body py-5">
                     <div class="icon icon-shape icon-shape-warning rounded-circle mb-4">
                       <i class="ni ni-planet"></i>

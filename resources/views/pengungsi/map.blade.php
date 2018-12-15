@@ -1,4 +1,4 @@
-@extends('pengungsi.layout')
+@extends('pengungsi.layout_map')
 
 @section('content')
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use DB;
 use App\Laporan;
 use App\Kategori;
@@ -12,8 +13,16 @@ class MasterController extends Controller
 {
     //
     public function laporan(){
-      $kategori = Kategori::all();
-      return view('laporkan', compact('kategori'));
+      if(Auth::guest()){
+        return redirect()->route('login')->with('success','Hanya Relawan terdaftar yang bisa melaporkan kebutuhan logistik.');
+      }else{
+        if(Auth::user()->user_type=='Donatur'){
+          return redirect()->route('login')->with('success','Hanya Relawan terdaftar yang bisa melaporkan kebutuhan logistik.');
+        }else{
+          $kategori = Kategori::all();
+          return view('laporkan', compact('kategori'));
+        }
+      }
     }
 
     public function store_laporan(Request $request){

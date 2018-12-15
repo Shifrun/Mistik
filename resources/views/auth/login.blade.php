@@ -16,7 +16,15 @@
     <div class="container pt-lg-md">
       <div class="row justify-content-center">
         <div class="col-lg-5">
+          @if ($message = Session::get('success'))
+              <div class="alert alert-success">
+                  <center>
+                    <p>{{ $message }}</p>
+                  </center>
+              </div>
+          @endif
           <div class="card bg-secondary shadow border-0">
+
             <div class="card-body px-lg-5 py-lg-5">
               <div class="text-center text-muted mb-4">
                 <small>Masuk dengan kredensial</small>
@@ -66,20 +74,20 @@
             </div>
             <div class="card-header bg-white pb-5">
               <div class="text-muted text-center mb-3">
-                <small>Atau masuk dengan</small>
+                <small>Sistem ini didukung oleh</small>
               </div>
               <div class="btn-wrapper text-center">
                 <a href="#" class="btn btn-neutral btn-icon">
                   <span class="btn-inner--icon">
-                    <img src="../img/icons/common/github.svg">
+                    <img src="../img/icons/common/bitbucket.svg">
                   </span>
-                  <span class="btn-inner--text">Github</span>
+                  <span class="btn-inner--text">Bitbucket</span>
                 </a>
                 <a href="#" class="btn btn-neutral btn-icon">
                   <span class="btn-inner--icon">
-                    <img src="../img/icons/common/google.svg">
+                    <img src="../img/icons/common/laravel.svg">
                   </span>
-                  <span class="btn-inner--text">Google</span>
+                  <span class="btn-inner--text">Laravel</span>
                 </a>
               </div>
             </div>
