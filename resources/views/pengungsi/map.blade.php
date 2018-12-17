@@ -73,8 +73,8 @@
 
     </script>
 
-    <script async defer
+    <!-- <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYCl9g6BehrGK78Z082mXpb0jIPHHGwYQ&callback=initMap">
-    </script>
+    </script> -->
 
 @endsection

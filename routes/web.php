@@ -14,7 +14,7 @@
 
 
 
-Route::get('/', function () { return view('home'); });
+Route::get('/', 'MasterController@home');
 
 Route::resource('logistik','LogistikController');
 Route::resource('laporan','LaporanController');
@@ -27,5 +27,6 @@ Auth::routes();
 Route::post('/laporkan/proses', 'LaporanController@store2');
 Route::get('laporkan', 'MasterController@laporan');
 Route::get('map', 'MasterController@map');
+Route::get('/dasbor', 'MasterController@dasbor');
 
 Route::get('/home', 'HomeController@index')->name('home');

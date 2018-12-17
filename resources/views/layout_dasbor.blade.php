@@ -37,14 +37,14 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="/dasbor">
               <i class="material-icons">insert_chart</i>
               <p>Dasbor</p>
             </a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link " href="/logistik">
+          <li class="nav-item">
+            <a class="nav-link" href="/logistik">
               <i class="material-icons">dashboard</i>
               <p>Logistik</p>
             </a>
@@ -66,7 +66,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/pengungsi">
+              <a class="nav-link " href="/pengungsi">
                 <i class="material-icons">supervisor_account</i>
                 <p>Pengungsi</p>
               </a>
@@ -80,13 +80,13 @@
             </li>
             @elseif(Auth::user()->user_type=='BPBD')
             <li class="nav-item ">
-              <a class="nav-link active" href="/laporan">
+              <a class="nav-link" href="/laporan">
                 <i class="material-icons">description</i>
                 <p>Laporan</p>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/pengungsi">
+              <a class="nav-link " href="/pengungsi">
                 <i class="material-icons">supervisor_account</i>
                 <p>Pengungsi</p>
               </a>
@@ -273,7 +273,7 @@
   <!-- Library for adding dinamically elements -->
   <script src="{{URL::to('/dashboard')}}/js/plugins/arrive.min.js"></script>
   <!--  Google Maps Plugin    -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYCl9g6BehrGK78Z082mXpb0jIPHHGwYQ&callback=initMap"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYCl9g6BehrGK78Z082mXpb0jIPHHGwYQ"></script>
   <!-- Chartist JS -->
   <script src="{{URL::to('/dashboard')}}/js/plugins/chartist.min.js"></script>
   <!--  Notifications Plugin    -->

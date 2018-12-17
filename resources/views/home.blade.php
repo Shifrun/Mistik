@@ -3,9 +3,10 @@
 @section('content')
   <main>
     <div class="position-relative">
+
       <!-- shape Hero -->
       <section class="section section-lg section-shaped pb-250">
-        <div class="shape shape-style-1 shape-default bg-home" >
+        <div class="shape shape-style-1 shape-primary alpha-4" >
           <span></span>
           <span></span>
           <span></span>
@@ -25,14 +26,18 @@
                 </h1>
                 <p class="lead text-white">Mistik merupakan layanan web untuk membantu pendistribusian logistik ke tempat-tempat kejadian bencana sehingga dapat membantu memudahkan pemerataan distribusi logistik untuk mendukung penanganan bencana.</p>
                 <div class="btn-wrapper">
-                  <a href="{{URL::to('/')}}/laporkan" class="btn btn-info btn-icon mb-3 mb-sm-0">
+                  <a href="{{URL::to('/')}}/laporkan" class="btn btn-success btn-icon mb-3 mb-sm-0">
                     <span class="btn-inner--icon"><i class="fas fa-clipboard-check"></i></span>
                     <span class="btn-inner--text">Laporkan Kebutuhan Logistik</span>
                   </a>
-                  <a href="{{URL::to('/')}}/logistik" class="btn btn-white btn-icon mb-3 mb-sm-0">
+                  <a href="{{URL::to('/')}}/donasikan" class="btn btn-warning btn-icon mb-3 mb-sm-0">
+                    <span class="btn-inner--icon"><i class="fas fa-clipboard-list"></i></span>
+                    <span class="btn-inner--text">Kirim Bantuan Logistik</span>
+                  </a>
+                  <!-- <a href="{{URL::to('/')}}/logistik" class="btn btn-white btn-icon mb-3 mb-sm-0">
                     <span class="btn-inner--icon"><i class="fas fa-clipboard-list"></i></span>
                     <span class="btn-inner--text">Lihat Laporan Logistik</span>
-                  </a>
+                  </a> -->
                 </div>
               </div>
             </div>
@@ -52,217 +57,110 @@
         <div class="row justify-content-center">
           <div class="col-lg-12">
             <div class="row row-grid">
-              <div class="col-lg-4">
+              <div class="col-lg-12">
                 <div class="card shadow border-0">
                   <div class="card-body py-5">
-                    <div class="icon icon-shape icon-shape-primary rounded-circle mb-4">
-                      <i class="ni ni-check-bold"></i>
+                    <!-- <div class="icon icon-shape icon-shape-primary rounded-circle mb-4">
+                      <i class="ni ni-app"></i>
+                    </div> -->
+                    <h5 class=" text-center text-primary text-uppercase">Laporan Kebutuhan Logistik Saat Ini</h5>
+                    <div class="nav-wrapper">
+                        <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-icons-text" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link mb-sm-3 mb-md-0 active" id="tabs-icons-text-1-tab" data-toggle="tab" href="#tabs-icons-text-1" role="tab" aria-controls="tabs-icons-text-1" aria-selected="true"><i class="ni ni-single-copy-04 mr-2"></i>Laporan</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-2-tab" data-toggle="tab" href="#tabs-icons-text-2" role="tab" aria-controls="tabs-icons-text-2" aria-selected="false"><i class="ni ni-map-big mr-2"></i>Peta Persebaran</a>
+                            </li>
+                        </ul>
                     </div>
-                    <h6 class="text-primary text-uppercase">Pantau Kebutuhan Logistik</h6>
-                    <p class="description mt-3">Layanan MISTIK memungkinkan BDPB atau instansi terkait untuk mengetahui kebutuhan logistik seperti apa di tempat kejadian bencana secara real time. Sehingga pendistribusian logistik terlaksana secara tepat waktu dan sasaran sesuai yang dibutuhkan tempat pengungsian.</p>
-                    <div>
-                      <span class="badge badge-pill badge-primary">pantau</span>
-                      <span class="badge badge-pill badge-primary">hitung</span>
-                      <span class="badge badge-pill badge-primary">laporkan</span>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="tabs-icons-text-1" role="tabpanel" aria-labelledby="tabs-icons-text-1-tab">
+                                  <div class="table-responsive">
+                                    <table class="table">
+                                        <tr>
+                                            <th>No</th>
+                                            <!-- <th>ID</th> -->
+                                            <th>Pelapor</th>
+                                            <th>Kontak</th>
+                                            <th>Lokasi</th>
+                                            <th>Kebutuhan</th>
+                                            <th>Catatan</th>
+                                        </tr>
+                                        <?php $i=0;?>
+                                        @foreach ($laporan as $product)
+                                        <tr>
+                                            <td>{{ ++$i }}</td>
+                                            <!-- <td>{{ $product->id }}</td> -->
+                                            <td>{{ $product->nama_pelapor }}</td>
+                                            <td>{{ $product->kontak }}</td>
+                                            <td>{{ $product->lokasi }}</td>
+                                            <td>{{ $product->kategori }}</td>
+                                            <td>{{ substr($product->catatan,0,30) }}...</td>
+                                        </tr>
+                                        @endforeach
+                                    </table>
+                                  </div>
+                                </div>
+                                <div class="tab-pane fade" id="tabs-icons-text-2" role="tabpanel" aria-labelledby="tabs-icons-text-2-tab">
+                                  <div id="map" style="height: 400px;"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <!-- <a href="#" class="btn btn-primary mt-4">Lebih Lanjut</a> -->
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4">
-                <div class="card shadow border-0">
-                  <div class="card-body py-5">
-                    <div class="icon icon-shape icon-shape-success rounded-circle mb-4">
-                      <i class="ni ni-istanbul"></i>
-                    </div>
-                    <h6 class="text-success text-uppercase">Monitor Ketersediaan Logistik</h6>
-                    <p class="description mt-3">Ketersediaan logistik untuk membantu mitigasi bencana sangatlah penting. MISTIK memungkinkan pemantauan ketersediaan stok logistik yang diperlukan serta daerah stok tersebut berada. Sehingga dapat menghindarkan penumpukan ketersediaan logistik di suatu wilayah bencana.</p>
-                    <div>
-                      <span class="badge badge-pill badge-success">pemerataan</span>
-                      <span class="badge badge-pill badge-success">distribusi</span>
-                    </div>
-                    <!-- <a href="#" class="btn btn-success mt-4">Lebih Lanjut</a> -->
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4">
-                <div class="card shadow border-0">
-                  <div class="card-body py-5">
-                    <div class="icon icon-shape icon-shape-warning rounded-circle mb-4">
-                      <i class="ni ni-planet"></i>
-                    </div>
-                    <h6 class="text-warning text-uppercase">Terima Bantuan Logistik</h6>
-                    <p class="description mt-3">Laporan kebutuhan logistik dari tempat pengungsian mendorong berbagai kalangan untuk turut membantu mitigasi bencana. MISTIK memudahkan pencatatan bantuan dari donatur baik itu bantuan barang logistik atau uang tunai untuk selanjutnya didistribusikan ke wilayah yang membutuhkan.</p>
-                    <div>
-                      <span class="badge badge-pill badge-warning">bantuan</span>
-                      <span class="badge badge-pill badge-warning">donasi</span>
-                    </div>
-                    <!-- <a href="#" class="btn btn-warning mt-4">Lebih Lanjut</a> -->
                   </div>
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
     </section>
-    <!-- <section class="section section-lg">
-      <div class="container">
-        <div class="row row-grid align-items-center">
-          <div class="col-md-6 order-md-2">
-            <img src="{{URL::to('/')}}/img/theme/promo-1.png" class="img-fluid floating">
-          </div>
-          <div class="col-md-6 order-md-1">
-            <div class="pr-md-5">
-              <div class="icon icon-lg icon-shape icon-shape-success shadow rounded-circle mb-5">
-                <i class="ni ni-settings-gear-65"></i>
-              </div>
-              <h3>Awesome features</h3>
-              <p>The kit comes with three pre-built pages to help you get started faster. You can change the text and images and you're good to go.</p>
-              <ul class="list-unstyled mt-5">
-                <li class="py-2">
-                  <div class="d-flex align-items-center">
-                    <div>
-                      <div class="badge badge-circle badge-success mr-3">
-                        <i class="ni ni-settings-gear-65"></i>
-                      </div>
-                    </div>
-                    <div>
-                      <h6 class="mb-0">Carefully crafted components</h6>
-                    </div>
-                  </div>
-                </li>
-                <li class="py-2">
-                  <div class="d-flex align-items-center">
-                    <div>
-                      <div class="badge badge-circle badge-success mr-3">
-                        <i class="ni ni-html5"></i>
-                      </div>
-                    </div>
-                    <div>
-                      <h6 class="mb-0">Amazing page examples</h6>
-                    </div>
-                  </div>
-                </li>
-                <li class="py-2">
-                  <div class="d-flex align-items-center">
-                    <div>
-                      <div class="badge badge-circle badge-success mr-3">
-                        <i class="ni ni-satisfied"></i>
-                      </div>
-                    </div>
-                    <div>
-                      <h6 class="mb-0">Super friendly support team</h6>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section> -->
-    <!-- <section class="section bg-secondary">
-      <div class="container">
-        <div class="row row-grid align-items-center">
-          <div class="col-md-6">
-            <div class="card bg-default shadow border-0">
-              <img src="{{URL::to('/')}}/img/theme/img-1-1200x1000.jpg" class="card-img-top">
-              <blockquote class="card-blockquote">
-                <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 583 95" class="svg-bg">
-                  <polygon points="0,52 583,95 0,95" class="fill-default" />
-                  <polygon points="0,42 583,95 683,0 0,95" opacity=".2" class="fill-default" />
-                </svg>
-                <h4 class="display-3 font-weight-bold text-white">Design System</h4>
-                <p class="lead text-italic text-white">The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever happens.</p>
-              </blockquote>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="pl-md-5">
-              <div class="icon icon-lg icon-shape icon-shape-warning shadow rounded-circle mb-5">
-                <i class="ni ni-settings"></i>
-              </div>
-              <h3>Our customers</h3>
-              <p class="lead">Don't let your uses guess by attaching tooltips and popoves to any element. Just make sure you enable them first via JavaScript.</p>
-              <p>The kit comes with three pre-built pages to help you get started faster. You can change the text and images and you're good to go.</p>
-              <p>The kit comes with three pre-built pages to help you get started faster. You can change the text and images and you're good to go.</p>
-              <a href="#" class="font-weight-bold text-warning mt-5">A beautiful UI Kit for impactful websites</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-     -->
-    <!-- <section class="section pb-0 bg-gradient-warning">
-      <div class="container">
-        <div class="row row-grid align-items-center">
-          <div class="col-md-6 order-lg-2 ml-lg-auto">
-            <div class="position-relative pl-md-5">
-              <img src="{{URL::to('/')}}/img/ill/ill-2.svg" class="img-center img-fluid">
-            </div>
-          </div>
-          <div class="col-lg-6 order-lg-1">
-            <div class="d-flex px-3">
-              <div>
-                <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
-                  <i class="ni ni-building text-primary"></i>
-                </div>
-              </div>
-              <div class="pl-4">
-                <h4 class="display-3 text-white">Modern Interface</h4>
-                <p class="text-white">The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever.</p>
-              </div>
-            </div>
-            <div class="card shadow shadow-lg--hover mt-5">
-              <div class="card-body">
-                <div class="d-flex px-3">
-                  <div>
-                    <div class="icon icon-shape bg-gradient-success rounded-circle text-white">
-                      <i class="ni ni-satisfied"></i>
-                    </div>
-                  </div>
-                  <div class="pl-4">
-                    <h5 class="title text-success">Awesome Support</h5>
-                    <p>The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever.</p>
-                    <a href="#" class="text-success">Learn more</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card shadow shadow-lg--hover mt-5">
-              <div class="card-body">
-                <div class="d-flex px-3">
-                  <div>
-                    <div class="icon icon-shape bg-gradient-warning rounded-circle text-white">
-                      <i class="ni ni-active-40"></i>
-                    </div>
-                  </div>
-                  <div class="pl-4">
-                    <h5 class="title text-warning">Modular Components</h5>
-                    <p>The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever.</p>
-                    <a href="#" class="text-warning">Learn more</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="separator separator-bottom separator-skew zindex-100">
-        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
-          <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
-        </svg>
-      </div>
-    </section> -->
+     <section class="section section-lg bg-gradient-default">
+       <div class="container pt-sm pb-100">
+         <div class="row text-center justify-content-center">
+           <div class="col-lg-10">
+             <h2 class="display-3 text-white">Bagaimana MISTIK Bekerja?</h2>
+             <!-- <p class="lead text-white">According to the National Oceanic and Atmospheric Administration, Ted, Scambos, NSIDClead scentist, puts the potentially record low maximum sea ice extent tihs year down to low ice.</p> -->
+           </div>
+         </div>
+         <div class="row row-grid mt-5">
+           <div class="col-lg-4">
+             <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
+               <i class="ni ni-check-bold text-primary"></i>
+             </div>
+             <h5 class="text-white mt-3">Pantau Kebutuhan Logistik</h5>
+             <p class="text-white mt-3 text-justify">Layanan MISTIK memungkinkan BDPB atau instansi terkait untuk mengetahui kebutuhan logistik seperti apa di tempat kejadian bencana secara real time. Sehingga pendistribusian logistik terlaksana secara tepat waktu dan sasaran sesuai yang dibutuhkan tempat pengungsian.</p>
+           </div>
+           <div class="col-lg-4">
+             <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
+               <i class="ni ni-istanbul text-primary"></i>
+             </div>
+             <h5 class="text-white mt-3">Monitor Ketersediaan Logistik</h5>
+             <p class="text-white mt-3 text-justify">Ketersediaan logistik untuk membantu mitigasi bencana sangatlah penting. MISTIK memungkinkan pemantauan ketersediaan stok logistik yang diperlukan serta daerah stok tersebut berada. Sehingga dapat menghindarkan penumpukan ketersediaan logistik di suatu wilayah bencana.</p>
+           </div>
+           <div class="col-lg-4">
+             <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
+               <i class="ni ni-atom text-primary"></i>
+             </div>
+             <h5 class="text-white mt-3">Terima Bantuan Logistik</h5>
+             <p class="text-white mt-3 text-justify">Laporan kebutuhan logistik dari tempat pengungsian mendorong berbagai kalangan untuk turut membantu mitigasi bencana. MISTIK memudahkan pencatatan bantuan dari donatur baik itu bantuan barang logistik atau uang tunai untuk selanjutnya didistribusikan ke wilayah yang membutuhkan.</p>
+           </div>
+         </div>
+       </div>
+       <!-- SVG separator -->
+       <div class="separator separator-bottom separator-skew zindex-100">
+         <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+           <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+         </svg>
+       </div>
+     </section>
 
-    <section class="section section-lg pt-0">
-      <div class="container">
-      </div>
-    </section>
-
-    <section class="section section-lg bg-gradient-default">
+    <!-- <section class="section section-lg bg-gradient-default">
       <div class="container pt-lg pb-300">
         <div class="row text-center justify-content-center">
           <div class="col-lg-10">
@@ -314,6 +212,55 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
   </main>
+
+  <script>
+  var map;
+   var markers = {!! json_encode($markers) !!}; //this should dump a javascript array object which does not need any extra interperting.
+   var marks = []; //just incase you want to be able to manipulate this later
+
+   function initMap() {
+       map = new google.maps.Map(document.getElementById('map'), {
+           center: {lat: -7.6655719, lng: 110.4200379},
+           zoom: 11
+       });
+
+       for(var i = 0; i < markers.length; i++){
+           marks[i] = addMarker(markers[i]);
+       }
+   }
+
+   function addMarker(marker){
+       var nama_pengungsian = marker.nama_pengungsian;
+       var jumlah_pengungsi = marker.jumlah_pengungsi;
+       var alamat = marker.alamat;
+       var daerah = marker.daerah;
+       var catatan = marker.catatan;
+       var kategori = marker.kategori;
+
+       var html = "<b> Nama tempat : " + nama_pengungsian + "</b> <br/>Jumlah Pengungsi : " + jumlah_pengungsi + " orang,<br/> <b>Butuh : </b>" + kategori + ", " + catatan + ",<br/>" + alamat + ",<br/>" + daerah;
+
+       var markerLatlng = new google.maps.LatLng(parseFloat(marker.lat),parseFloat(marker.lng));
+
+
+       var mark = new google.maps.Marker({
+           map: map,
+           position: markerLatlng,
+
+       });
+
+       var infoWindow = new google.maps.InfoWindow;
+       google.maps.event.addListener(mark, 'click', function(){
+           infoWindow.setContent(html);
+           infoWindow.open(map, mark);
+       });
+
+       return mark;
+   }
+
+   function doNothing(){} //very appropriately named function. whats it for?
+
+
+  </script>
 @endsection

@@ -12,6 +12,22 @@ use Illuminate\Http\Request;
 class MasterController extends Controller
 {
     //
+    public function home(){
+      $laporan = DB::table('laporans')
+                    ->join('kategoris','laporans.kategori_kebutuhan','=','kategoris.id')
+                    ->select('laporans.*','kategoris.kategori as kategori')
+                    ->latest()->limit('5')
+                    ->get();
+
+      $markers = DB::table('pengungsis')
+                    ->join('laporans','laporans.lokasi','=','pengungsis.id')
+                    ->join('kategoris','laporans.kategori_kebutuhan','=','kategoris.id')
+                    ->select('pengungsis.*','laporans.*','kategoris.*')
+                    ->get();
+
+      return view('home', compact('laporan','markers'));
+    }
+
     public function laporan(){
       if(Auth::guest()){
         return redirect()->route('login')->with('success','Hanya Relawan terdaftar yang bisa melaporkan kebutuhan logistik.');
@@ -53,5 +69,23 @@ class MasterController extends Controller
       // dd($markers);
 
       return view('pengungsi.map', compact('markers'));
+    }
+
+    public function dasbor(){
+      $laporan = DB::table('laporans')
+                    ->join('kategoris','laporans.kategori_kebutuhan','=','kategoris.id')
+                    ->select('laporans.*','kategoris.kategori as kategori')
+                    ->latest()
+                    ->limit('5')
+                    ->get();
+
+      $logistiks = DB::table('logistiks')
+                    ->join('kategoris','logistiks.kategori','=','kategoris.id')
+                    ->select('logistiks.*','kategoris.kategori as nama_kategori')
+                    ->latest()
+                    ->limit('5')
+                    ->get();
+
+      return view('dasbor',compact('laporan','logistiks'));
     }
 }

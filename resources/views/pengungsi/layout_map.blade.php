@@ -273,7 +273,7 @@
   <!-- Library for adding dinamically elements -->
   <script src="{{URL::to('/dashboard')}}/js/plugins/arrive.min.js"></script>
   <!--  Google Maps Plugin    -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYCl9g6BehrGK78Z082mXpb0jIPHHGwYQ&callback=initMap"></script>
   <!-- Chartist JS -->
   <script src="{{URL::to('/dashboard')}}/js/plugins/chartist.min.js"></script>
   <!--  Notifications Plugin    -->
