@@ -20,6 +20,8 @@
     <link href="{{URL::to('/dashboard')}}/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
     <link href="{{URL::to('/dashboard')}}/demo/demo.css" rel="stylesheet" />
 
+    <script src="{{URL::to('/dashboard')}}/js/plugins/sweetalert2.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -247,7 +249,6 @@
   <!-- Plugin for the momentJs  -->
   <script src="{{URL::to('/dashboard')}}/js/plugins/moment.min.js"></script>
   <!--  Plugin for Sweet Alert -->
-  <script src="{{URL::to('/dashboard')}}/js/plugins/sweetalert2.js"></script>
   <!-- Forms Validations Plugin -->
   <script src="{{URL::to('/dashboard')}}/js/plugins/jquery.validate.min.js"></script>
   <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->

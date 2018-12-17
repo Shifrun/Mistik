@@ -45,7 +45,7 @@
                   <div class="col-xs-12 col-sm-12 col-md-12">
                       <div class="form-group">
                           <strong>Kategori:</strong>
-                          <select class="form-control" name="kategori_kebutuhan">
+                          <select class="form-control" name="kategori">
                             <option value="">Pilih Kebutuhan</option>
                             @foreach ($kategori as $product)
                             <option value="{{$product->id}}">{{$product->kategori}}</option>

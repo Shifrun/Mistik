@@ -14,7 +14,8 @@
 
 
 
-Route::get('/', 'MasterController@home');
+Route::get('', 'MasterController@home');
+Route::get('home', 'MasterController@home');
 
 Route::resource('logistik','LogistikController');
 Route::resource('laporan','LaporanController');
@@ -26,7 +27,7 @@ Auth::routes();
 
 Route::post('/laporkan/proses', 'LaporanController@store2');
 Route::get('laporkan', 'MasterController@laporan');
+Route::get('donasikan', 'MasterController@donasikan');
+Route::get('tentang', 'MasterController@tentang');
 Route::get('map', 'MasterController@map');
-Route::get('/dasbor', 'MasterController@dasbor');
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('dasbor', 'MasterController@dasbor');

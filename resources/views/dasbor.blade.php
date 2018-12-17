@@ -10,7 +10,7 @@
           <i class="material-icons">content_copy</i>
         </div>
         <p class="card-category">Total Unit Logistik</p>
-        <h3 class="card-title">26870
+        <h3 class="card-title">{{$sum_logistik}}
           <small> Unit</small>
         </h3>
       </div>
@@ -29,7 +29,7 @@
           <i class="material-icons">home</i>
         </div>
         <p class="card-category">Total Pengungsian</p>
-        <h3 class="card-title">4
+        <h3 class="card-title">{{$count_pengungsian}}
           <small> Pengungsian</small>
         </h3>
       </div>
@@ -47,7 +47,7 @@
           <i class="material-icons">info_outline</i>
         </div>
         <p class="card-category">Laporan Masuk</p>
-        <h3 class="card-title">27
+        <h3 class="card-title">{{$count_laporan}}
         <small>Laporan</small></h3>
       </div>
       <div class="card-footer">

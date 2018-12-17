@@ -58,7 +58,7 @@ class LogistikController extends Controller
 
         Logistik::create($request->all());
 
-        return redirect()->route('logistik.index')->with('success','Data berhasil ditambahkan.');
+        return redirect()->route('logistik.index')->with('success','Data berhasil ditambahkan');
     }
 
     /**
