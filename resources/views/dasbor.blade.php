@@ -114,7 +114,7 @@
     <div class="card">
       <div class="card-header card-header-primary">
         <h4 class="card-title">Laporan Terbaru</h4>
-        <p class="card-category">Laporan terbaru pada {{$laporan[4]->created_at}}</p>
+        <p class="card-category">Laporan terbaru pada {{$laporan[2]->created_at}}</p>
       </div>
       <div class="card-body table-responsive">
         <table class="table table-hover">

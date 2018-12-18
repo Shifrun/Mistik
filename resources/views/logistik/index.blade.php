@@ -14,6 +14,7 @@
 
     @if ($message = Session::get('success'))
         <script>swal("{{ $message }}","","success")</script>
+
     @endif
     <div class="row">
       <div class="col-md-12">
@@ -66,7 +67,7 @@
                               <a class="btn btn-primary" href="{{ route('logistik.edit',$product->id) }}"><i class="material-icons">edit</i></a>
                               @csrf
                               @method('DELETE')
-                              <button type="submit" class="btn btn-danger" onclick="return confirmDelete();"><i class="material-icons">delete</i></button>
+                              <button type="submit" class="btn btn-danger" onclick="return confirmDelete()"><i class="material-icons">delete</i></button>
                               @endif
                             @endguest
                           </form>
@@ -80,8 +81,10 @@
       </div>
     </div>
 
-    <script>
+
+  <script>
     function confirmDelete(){
+      event.preventDefault();
       Swal({
         title: 'Apakah anda yakin?',
         text: "Data yang dihapus tidak dapat dikembalikan",
@@ -90,8 +93,8 @@
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Hapus',
-        cancelButtonText: 'Batal'
-        }).then((result) => {
+        cancelButtonText: 'Batal',
+      }).then((result) => {
         if (result.value) {
           Swal(
             'Data berhasil dihapus!',
@@ -102,8 +105,7 @@
         }
         })
       }
-      </script>
-
+</script>
 
     {!! $logistiks->links() !!}
 @endsection
