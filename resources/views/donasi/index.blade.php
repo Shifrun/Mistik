@@ -46,7 +46,7 @@
                   <tr>
                       <td>{{ ++$i }}</td>
                       <!-- <td>{{ $product->id }}</td> -->
-                      <td>{{ $product->donatur }}</td>
+                      <td>{{ $product->name }}</td>
                       <td>{{ $product->kontak }}</td>
 
                       <td>

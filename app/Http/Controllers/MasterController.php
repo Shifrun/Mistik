@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use Auth;
 use DB;
+use App\Donasi;
 use App\Laporan;
 use App\Kategori;
 use App\Pengungsi;
+use App\User;
+use App\Logistik;
 use Illuminate\Http\Request;
 
 class MasterController extends Controller
@@ -15,8 +18,10 @@ class MasterController extends Controller
     public function home(){
       $laporan = DB::table('laporans')
                     ->join('kategoris','laporans.kategori_kebutuhan','=','kategoris.id')
-                    ->select('laporans.*','kategoris.kategori as kategori')
-                    ->latest()->limit('5')
+                    ->join('pengungsis','laporans.lokasi','=','pengungsis.id')
+                    ->select('laporans.*','kategoris.kategori as kategori','pengungsis.nama_pengungsian as lokasi_pengungsian')
+                    ->latest()
+                    ->limit('5')
                     ->get();
 
       $markers = DB::table('pengungsis')
@@ -40,7 +45,8 @@ class MasterController extends Controller
           return redirect()->route('home')->with('success','Hanya Relawan terdaftar yang bisa melaporkan kebutuhan logistik.');
         }else{
           $kategori = Kategori::all();
-          return view('laporkan', compact('kategori'));
+          $lokasi = Pengungsi::all();
+          return view('laporkan', compact('kategori','lokasi'));
         }
       }
     }
@@ -56,9 +62,12 @@ class MasterController extends Controller
         ]);
 
         Laporan::create($request->all());
+        $kategori = Kategori::all();
+        $lokasi = Pengungsi::all();
+        $success = "Laporan berhasil ditambahkan";
         // echo $request;
         // die;
-        return redirect()->route('/')->with('success','Data berhasil ditambahkan.');
+        return view('laporkan', compact('kategori','lokasi','success'));
     }
 
     public function donasikan(){
@@ -68,8 +77,10 @@ class MasterController extends Controller
         if(Auth::user()->user_type=='Relawan'){
           return redirect()->route('home')->with('success','Hanya Donatur terdaftar yang bisa melaporkan kebutuhan logistik.');
         }else{
+          $lokasi = Pengungsi::all();
           $kategori = Kategori::all();
-          return view('donasikan', compact('kategori'));
+          $user = User::all();
+          return view('donasikan', compact('kategori','lokasi','user'));
         }
       }
     }
@@ -77,17 +88,30 @@ class MasterController extends Controller
     public function store_donasikan(Request $request){
         //
         $request->validate([
-          'nama_pelapor' => 'required',
-          'kontak' => 'required',
-          'lokasi' => 'required',
-          'kategori_kebutuhan' => 'required',
-          'catatan' => 'required',
+          'donatur' => 'required',
+          'kontak'  => 'required',
         ]);
 
-        Laporan::create($request->all());
+        Donasi::create($request->all());
+
+        $request->validate([
+          'nama' => 'required',
+          'stok' => 'required',
+          'kadaluarsa' => 'required',
+          'kategori' => 'required',
+          'daerah' => 'required',
+          'sumber' => 'required'
+        ]);
+
+        Logistik::create($request->all());
         // echo $request;
         // die;
-        return redirect()->route('/')->with('success','Data berhasil ditambahkan.');
+        $lokasi = Pengungsi::all();
+        $kategori = Kategori::all();
+        $user = User::all();
+
+        $success = "Donasi berhasil ditambahkan";
+        return view('donasikan', compact('kategori','lokasi','user','success'))->with('success','Donasi berhasil ditambahkan.');
     }
 
     public function map(){
@@ -105,9 +129,11 @@ class MasterController extends Controller
     }
 
     public function dasbor(){
+
       $laporan = DB::table('laporans')
                     ->join('kategoris','laporans.kategori_kebutuhan','=','kategoris.id')
-                    ->select('laporans.*','kategoris.kategori as kategori')
+                    ->join('pengungsis','laporans.lokasi','=','pengungsis.id')
+                    ->select('laporans.*','kategoris.kategori as kategori','pengungsis.nama_pengungsian as lokasi_pengungsian')
                     ->latest()
                     ->limit('5')
                     ->get();

@@ -23,11 +23,9 @@
       <div class="container">
         <div class="row justify-content-center mt--300">
           <div class="col-lg-8">
-            @if ($message = Session::get('success'))
-                <div class="alert alert-success">
-                    <p>{{ $message }}</p>
-                </div>
-            @endif
+            @isset($success)
+                <script>swal("{{ $success }}","","success")</script>
+            @endisset
             <div class="card bg-gradient-secondary shadow">
               <div class="card-body p-lg-5">
               <form action="/laporkan/proses" method="POST">
@@ -63,7 +61,13 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="fas fa-map-marker"></i></span>
                     </div>
-                    <input class="form-control" name="lokasi" placeholder="Lokasi" type="text">
+                    <!-- <input class="form-control" name="lokasi" placeholder="Lokasi" type="text"> -->
+                    <select class="form-control" name="lokasi">
+                      <option value="">Pilih Lokasi</option>
+                      @foreach ($lokasi as $product)
+                      <option value="{{$product->id}}">{{$product->nama_pengungsian}}</option>
+                      @endforeach
+                    </select>
                   </div>
                 </div>
                 <div class="form-group">

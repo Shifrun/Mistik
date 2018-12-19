@@ -23,14 +23,12 @@
       <div class="container">
         <div class="row justify-content-center mt--300">
           <div class="col-lg-8">
-            @if ($message = Session::get('success'))
-                <div class="alert alert-success">
-                    <p>{{ $message }}</p>
-                </div>
-            @endif
+            @isset($success)
+                <script>swal("{{ $success }}","","success")</script>
+            @endisset
             <div class="card bg-gradient-secondary shadow">
               <div class="card-body p-lg-5">
-              <form action="/laporkan/proses" method="POST">
+              <form action="/donasi/proses" method="POST">
                 @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul class="list-unstyled">
@@ -47,7 +45,9 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-user-run"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Nama pelapor" name="nama_pelapor" type="text">
+                    <input class="form-control" placeholder="Nama Donatur" name="donaturs" value="{{Auth::User()->name}}" type="text">
+                    <input class="form-control" placeholder="" name="donatur" value="{{Auth::User()->id}}" type="hidden">
+                    <input class="form-control" placeholder="" name="sumber" value="{{Auth::User()->id}}" type="hidden">
                   </div>
                 </div>
                 <div class="form-group">
@@ -55,15 +55,31 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="fas fa-phone"></i></span>
                     </div>
-                    <input class="form-control" name="kontak" placeholder="Nomor Kontak Pelapor" type="text">
+                    <input class="form-control" name="kontak" placeholder="Nomor Kontak Donatur" type="text">
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="input-group input-group-alternative">
                     <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="fas fa-map-marker"></i></span>
+                      <span class="input-group-text"><i class="fas fa-box"></i></span>
                     </div>
-                    <input class="form-control" name="lokasi" placeholder="Lokasi" type="text">
+                    <input class="form-control" name="nama" placeholder="Nama Logistik" type="text">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fas fa-boxes"></i></span>
+                    </div>
+                    <input class="form-control" name="stok" placeholder="Jumlah Stok" type="text">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                    </div>
+                    <input class="form-control" name="kadaluarsa" placeholder="Tanggal Kadaluarsa" type="date">
                   </div>
                 </div>
                 <div class="form-group">
@@ -72,16 +88,27 @@
                       <span class="input-group-text"><i class="fas fa-box"></i></span>
                     </div>
                     <!-- <input class="form-control" name="kategori_kebutuhan" placeholder="Kebutuhan Logistik" type="text"> -->
-                    <select class="form-control" name="kategori_kebutuhan">
-                      <option value="">Pilih Kebutuhan</option>
+                    <select class="form-control" name="kategori">
+                      <option value="">Pilih kategori Kebutuhan</option>
                       @foreach ($kategori as $product)
                       <option value="{{$product->id}}">{{$product->kategori}}</option>
                       @endforeach
                     </select>
                   </div>
                 </div>
-                <div class="form-group mb-4">
-                  <textarea class="form-control form-control-alternative" name="catatan" rows="4" cols="80" placeholder="Catatan..."></textarea>
+                <div class="form-group">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fas fa-map-marker"></i></span>
+                    </div>
+                    <!-- <input class="form-control" name="kategori_kebutuhan" placeholder="Kebutuhan Logistik" type="text"> -->
+                    <select class="form-control" name="daerah">
+                      <option value="">Pilih Tempat Pengungsian</option>
+                      @foreach ($lokasi as $item)
+                      <option value="{{$item->id}}">{{$item->nama_pengungsian}}</option>
+                      @endforeach
+                    </select>
+                  </div>
                 </div>
                 <div>
                   <button type="submit" name="submit" class="btn btn-default btn-round btn-block btn-lg">Kirim Bantuan</button>

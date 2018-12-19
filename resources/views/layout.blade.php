@@ -22,8 +22,7 @@
     <link type="text/css" href="{{URL::to('/')}}/css/docs.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link type="text/css" href="{{URL::to('/')}}/css/custom.css" rel="stylesheet">
-
-
+    <script src="{{URL::to('/dashboard')}}/js/plugins/sweetalert2.js"></script>
 </head>
 
 <body>
@@ -40,6 +39,7 @@
   <script src="{{URL::to('/')}}/vendor/headroom/headroom.min.js"></script>
   <!-- Argon JS -->
   <script src="{{URL::to('/')}}/js/argon.js?v=1.0.1"></script>
+  <script src="{{URL::to('/dashboard')}}/js/plugins/sweetalert2.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYCl9g6BehrGK78Z082mXpb0jIPHHGwYQ&callback=initMap"></script>
   <!--  Google Maps Plugin    -->
 

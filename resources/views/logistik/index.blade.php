@@ -56,7 +56,7 @@
                       <td>{{ $product->stok }}</td>
                       <td>{{ $product->kadaluarsa }}</td>
                       <td>{{ $product->nama_kategori }}</td>
-                      <td>{{ $product->daerah }}</td>
+                      <td>{{ $product->nama_pengungsian }}</td>
                       <td>
                           <form action="{{ route('logistik.destroy',$product->id) }}" method="POST">
                               <a class="btn btn-info" href="{{ route('logistik.show',$product->id) }}"><i class="material-icons">search</i></a>
@@ -99,6 +99,8 @@
             'success'
           )
           return true;
+        }else{
+          return false;
         }
         })
       }

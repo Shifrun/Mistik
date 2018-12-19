@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use DB;
-use App\logistik;
+use App\User;
+use App\Pengungsi;
+use App\Logistik;
 use App\Kategori;
 use Illuminate\Http\Request;
 
@@ -19,7 +21,9 @@ class LogistikController extends Controller
         //
         $logistiks = DB::table('logistiks')
                       ->join('kategoris','logistiks.kategori','=','kategoris.id')
-                      ->select('logistiks.*','kategoris.kategori as nama_kategori')
+                      ->join('pengungsis','logistiks.daerah','=','pengungsis.id')
+                      ->join('users','logistiks.sumber','=','users.id')
+                      ->select('logistiks.*','kategoris.kategori as nama_kategori','pengungsis.nama_pengungsian')
                       ->paginate('5');
 
         // dd($logistiks);
@@ -35,8 +39,11 @@ class LogistikController extends Controller
     public function create()
     {
         //
+        $lokasi = Pengungsi::all();
         $kategori = Kategori::all();
-        return view('logistik.create', compact('kategori'));
+        $user = User::all();
+
+        return view('logistik.create', compact('kategori','lokasi','user'));
     }
 
     /**
@@ -80,8 +87,10 @@ class LogistikController extends Controller
      */
     public function edit(logistik $logistik)
     {
+        $lokasi = Pengungsi::all();
         $kategori = Kategori::all();
-        return view('logistik.edit',compact('logistik','kategori'));
+        $user = User::all();
+        return view('logistik.edit',compact('logistik','kategori','lokasi','user'));
     }
 
     /**

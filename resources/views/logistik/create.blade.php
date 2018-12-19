@@ -26,7 +26,7 @@
                <div class="row">
                   <div class="col-xs-12 col-sm-12 col-md-12">
                       <div class="form-group">
-                          <strong>Name:</strong>
+                          <strong>Nama Logistik:</strong>
                           <input type="text" name="nama" class="form-control" placeholder="Name">
                       </div>
                   </div>
@@ -56,7 +56,25 @@
                   <div class="col-xs-12 col-sm-12 col-md-12">
                       <div class="form-group">
                           <strong>Daerah:</strong>
-                          <input type="text" class="form-control" name="daerah" placeholder="daerah">
+                          <!-- <input type="text" class="form-control" name="daerah" placeholder="daerah"> -->
+                          <select class="form-control" name="daerah">
+                            <option value="">Pilih Tempat Pengungsian</option>
+                            @foreach ($lokasi as $item)
+                            <option value="{{$item->id}}">{{$item->nama_pengungsian}}</option>
+                            @endforeach
+                          </select>
+                      </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-12">
+                      <div class="form-group">
+                          <strong>Sumber Logistik:</strong>
+                          <!-- <input type="text" class="form-control" name="daerah" placeholder="daerah"> -->
+                          <select class="form-control" name="sumber">
+                            <option value="">Pilih Pemberi Logistik</option>
+                            @foreach ($user as $item)
+                            <option value="{{$item->id}}">{{$item->name}}</option>
+                            @endforeach
+                          </select>
                       </div>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-12 text-right pull-right">

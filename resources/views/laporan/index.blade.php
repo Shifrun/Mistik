@@ -56,7 +56,7 @@
                       <!-- <td>{{ $product->id }}</td> -->
                       <td>{{ $product->nama_pelapor }}</td>
                       <td>{{ $product->kontak }}</td>
-                      <td>{{ $product->lokasi }}</td>
+                      <td>{{ $product->lokasi_pengungsian }}</td>
                       <td>{{ $product->kategori }}</td>
                       <td>{{ $product->catatan }}</td>
                       <td>

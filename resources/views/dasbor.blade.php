@@ -134,7 +134,7 @@
               <!-- <td>{{ $product->id }}</td> -->
               <td>{{ $product->nama_pelapor }}</td>
               <td>{{ $product->kontak }}</td>
-              <td>{{ $product->lokasi }}</td>
+              <td>{{ $product->lokasi_pengungsian }}</td>
               <td>{{ $product->kategori }}</td>
               <td>{{ substr($product->catatan,0,30)}}...</td>
           </tr>

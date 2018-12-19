@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use DB;
 use App\Donasi;
 use App\User;
+use App\Pengungsi;
+use App\Kategori;
+use App\Logistik;
 use Illuminate\Http\Request;
 
 class DonasiController extends Controller
@@ -16,8 +19,13 @@ class DonasiController extends Controller
      */
     public function index()
     {
-        $donasi = donasi::latest()->paginate(5);
-        
+        $donasi = DB::table('donasis')
+                      ->join('users','donasis.donatur','=','users.id')
+                      ->select('donasis.*','users.name')
+                      ->paginate('5');
+
+        // dd($donasi);
+
         return view('donasi.index',compact('donasi'))->with('i',(request()->input('page',1) - 1) * 5);
     }
 
@@ -29,7 +37,10 @@ class DonasiController extends Controller
     public function create()
     {
         //
-        return view('donasi.create');
+        $lokasi = Pengungsi::all();
+        $kategori = Kategori::all();
+        $user = User::all();
+        return view('donasi.create',compact('lokasi','kategori','user'));
     }
 
     /**
@@ -47,6 +58,17 @@ class DonasiController extends Controller
         ]);
 
         Donasi::create($request->all());
+
+        $request->validate([
+          'nama' => 'required',
+          'stok' => 'required',
+          'kadaluarsa' => 'required',
+          'kategori' => 'required',
+          'daerah' => 'required',
+          'sumber' => 'required'
+        ]);
+
+        Logistik::create($request->all());
 
         return redirect()->route('donasi.index')->with('success','Data berhasil ditambahkan.');
     }

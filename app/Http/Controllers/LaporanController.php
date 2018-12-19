@@ -20,7 +20,8 @@ class LaporanController extends Controller
         $laporan = laporan::latest()->paginate(5);
         $laporan = DB::table('laporans')
                       ->join('kategoris','laporans.kategori_kebutuhan','=','kategoris.id')
-                      ->select('laporans.*','kategoris.kategori as kategori')
+                      ->join('pengungsis','laporans.lokasi','=','pengungsis.id')
+                      ->select('laporans.*','kategoris.kategori as kategori','pengungsis.nama_pengungsian as lokasi_pengungsian')
                       ->paginate('5');
 
         return view('laporan.index',compact('laporan'))->with('i',(request()->input('page',1) - 1) * 5);

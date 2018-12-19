@@ -65,7 +65,34 @@
                   <div class="col-xs-12 col-sm-12 col-md-12">
                       <div class="form-group">
                           <strong>Daerah:</strong>
-                          <input type="text" class="form-control" value="{{ $logistik->daerah }}" name="daerah" placeholder="daerah">
+                          <!-- <input type="text" class="form-control" value="{{ $logistik->daerah }}" name="daerah" placeholder="daerah"> -->
+                          <select class="form-control" name="daerah">
+                            <!-- <option value="{{$logistik->kategori}}">{{$logistik->nama_kategori}}</option> -->
+                            @foreach ($lokasi as $item)
+                            @if($item->id == $logistik->daerah)
+                            <option value="{{$item->id}}" selected>{{$item->nama_pengungsian}}</option>
+                            @else
+                            <option value="{{$item->id}}">{{$item->nama_pengungsian}}</option>
+                            @endif
+
+                            @endforeach
+                          </select>
+                      </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-12">
+                      <div class="form-group">
+                          <strong>Sumber Logistik:</strong>
+                          <!-- <input type="text" class="form-control" name="daerah" placeholder="daerah"> -->
+                          <select class="form-control" name="sumber">
+                            <option value="">Pilih Pemberi Logistik</option>
+                            @foreach ($user as $item)
+                            @if($item->id == $logistik->sumber)
+                            <option value="{{$item->id}}" selected>{{$item->name}}</option>
+                            @else
+                            <option value="{{$item->id}}">{{$item->name}}</option>
+                            @endif
+                            @endforeach
+                          </select>
                       </div>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-12 text-right pull-right">
