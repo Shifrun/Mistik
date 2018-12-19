@@ -19,6 +19,9 @@
 
     <link href="{{URL::to('/dashboard')}}/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
     <link href="{{URL::to('/dashboard')}}/demo/demo.css" rel="stylesheet" />
+    <!--SweetAlert-->
+    <script src="{{URL::to('/dashboard')}}/js/plugins/sweetalert2.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </head>
 

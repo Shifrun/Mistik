@@ -13,9 +13,8 @@
     </div>
 
     @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
+        <script>swal("{{ $message }}","","success")</script>
+
     @endif
     <div class="row">
       <div class="col-md-12">
@@ -66,6 +65,31 @@
         </div>
       </div>
     </div>
+
+    <script>
+    function confirmDelete(){
+      event.preventDefault();
+      Swal({
+        title: 'Apakah anda yakin?',
+        text: "Data yang dihapus tidak dapat dikembalikan",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Hapus',
+        cancelButtonText: 'Batal',
+      }).then((result) => {
+        if (result.value) {
+          Swal(
+            'Data berhasil dihapus!',
+            '',
+            'success'
+          )
+          return true;
+        }
+        })
+      }
+</script>
 
     {!! $donasi->links() !!}
 @endsection
