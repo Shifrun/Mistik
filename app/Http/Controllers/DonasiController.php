@@ -21,7 +21,9 @@ class DonasiController extends Controller
     {
         $donasi = DB::table('donasis')
                       ->join('users','donasis.donatur','=','users.id')
-                      ->select('donasis.*','users.name')
+                      ->join('logistiks','donasis.donatur','=','logistiks.sumber')
+                      ->join('kategoris','kategoris.id','=','logistiks.kategori')
+                      ->select('donasis.*','users.name','logistiks.nama','logistiks.stok','logistiks.kategori')
                       ->paginate('5');
 
         // dd($donasi);
