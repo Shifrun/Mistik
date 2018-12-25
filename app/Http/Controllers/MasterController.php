@@ -42,7 +42,7 @@ class MasterController extends Controller
         return redirect()->route('login')->with('success','Hanya Relawan terdaftar yang bisa melaporkan kebutuhan logistik.');
       }else{
         if(Auth::user()->user_type=='Donatur'){
-          return redirect()->route('home')->with('success','Hanya Relawan terdaftar yang bisa melaporkan kebutuhan logistik.');
+          return redirect()->route('login')->with('success','Hanya Relawan terdaftar yang bisa melaporkan kebutuhan logistik.');
         }else{
           $kategori = Kategori::all();
           $lokasi = Pengungsi::all();
@@ -75,7 +75,7 @@ class MasterController extends Controller
         return redirect()->route('login')->with('success','Hanya Donatur terdaftar yang bisa melaporkan kebutuhan logistik.');
       }else{
         if(Auth::user()->user_type=='Relawan'){
-          return redirect()->route('home')->with('success','Hanya Donatur terdaftar yang bisa melaporkan kebutuhan logistik.');
+          return redirect()->route('login')->with('success','Hanya Donatur terdaftar yang bisa melaporkan kebutuhan logistik.');
         }else{
           $lokasi = Pengungsi::all();
           $kategori = Kategori::all();

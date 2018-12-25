@@ -17,6 +17,7 @@
 Route::get('', 'MasterController@home');
 Route::get('/', 'MasterController@home');
 Route::get('home', 'MasterController@home');
+Route::get('/home', 'MasterController@home');
 
 Route::resource('logistik','LogistikController');
 Route::resource('laporan','LaporanController');

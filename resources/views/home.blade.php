@@ -26,6 +26,7 @@
                 </h1>
                 <p class="lead text-white">Mistik merupakan layanan web untuk membantu pendistribusian logistik ke tempat-tempat kejadian bencana sehingga dapat membantu memudahkan pemerataan distribusi logistik untuk mendukung penanganan bencana.</p>
                 <div class="btn-wrapper">
+                  @guest
                   <a href="{{URL::to('/')}}/laporkan" class="btn btn-success btn-icon mb-3 mb-sm-0">
                     <span class="btn-inner--icon"><i class="fas fa-clipboard-check"></i></span>
                     <span class="btn-inner--text">Laporkan Kebutuhan Logistik</span>
@@ -34,6 +35,28 @@
                     <span class="btn-inner--icon"><i class="fas fa-clipboard-list"></i></span>
                     <span class="btn-inner--text">Kirim Bantuan Logistik</span>
                   </a>
+                  @else
+                  @if(Auth::user()->user_type=='Relawan')
+                  <a href="{{URL::to('/')}}/laporkan" class="btn btn-success btn-icon mb-3 mb-sm-0">
+                    <span class="btn-inner--icon"><i class="fas fa-clipboard-check"></i></span>
+                    <span class="btn-inner--text">Laporkan Kebutuhan Logistik</span>
+                  </a>
+                  @elseif(Auth::user()->user_type=='Donatur')
+                  <a href="{{URL::to('/')}}/donasikan" class="btn btn-warning btn-icon mb-3 mb-sm-0">
+                    <span class="btn-inner--icon"><i class="fas fa-clipboard-list"></i></span>
+                    <span class="btn-inner--text">Kirim Bantuan Logistik</span>
+                  </a>
+                  @elseif(Auth::user()->user_type=='BPBD')
+                  <a href="{{URL::to('/')}}/laporkan" class="btn btn-success btn-icon mb-3 mb-sm-0">
+                    <span class="btn-inner--icon"><i class="fas fa-clipboard-check"></i></span>
+                    <span class="btn-inner--text">Laporkan Kebutuhan Logistik</span>
+                  </a>
+                  <a href="{{URL::to('/')}}/donasikan" class="btn btn-warning btn-icon mb-3 mb-sm-0">
+                    <span class="btn-inner--icon"><i class="fas fa-clipboard-list"></i></span>
+                    <span class="btn-inner--text">Kirim Bantuan Logistik</span>
+                  </a>
+                  @endif
+                  @endguest
                   <!-- <a href="{{URL::to('/')}}/logistik" class="btn btn-white btn-icon mb-3 mb-sm-0">
                     <span class="btn-inner--icon"><i class="fas fa-clipboard-list"></i></span>
                     <span class="btn-inner--text">Lihat Laporan Logistik</span>
