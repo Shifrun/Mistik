@@ -40,6 +40,7 @@
                   <div class="col-xs-12 col-sm-12 col-md-12">
                       <div class="form-group">
                           <strong>Lokasi :</strong>
+                          
                           <input type="text" class="form-control" value="{{$laporan->lokasi}}" name="lokasi" placeholder="Lokasi">
                       </div>
                   </div>
@@ -47,7 +48,7 @@
                       <div class="form-group">
                           <strong>Kategori Kebutuhan :</strong>
                           <!-- <input type="text" class="form-control" value="{{$laporan->kategori_kebutuhan}}" name="kategori_kebutuhan" placeholder="Kategori"> -->
-                          <select class="form-control" name="kategori_kebutuhan">
+                          <!-- <select class="form-control" name="kategori_kebutuhan">
                             <option value="">Pilih Kebutuhan</option>
                             @foreach ($kategori as $item)
                             @if($item->id == $laporan->kategori_kebutuhan)
@@ -57,7 +58,8 @@
                             @endif
 
                             @endforeach
-                          </select>
+                          </select> -->
+                        <input type="text" class="form-control" value="{{$laporan->kategori_kebutuhan}}" name="kategori_kebutuhan" placeholder="Kebutuhan">
                       </div>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-12">

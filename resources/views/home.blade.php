@@ -58,8 +58,8 @@
                   @endif
                   @endguest
                   <!-- <a href="{{URL::to('/')}}/logistik" class="btn btn-white btn-icon mb-3 mb-sm-0">
-                    <span class="btn-inner--icon"><i class="fas fa-clipboard-list"></i></span>
-                    <span class="btn-inner--text">Lihat Laporan Logistik</span>
+                    <span class="btn-innericon"><i class="fas fa-clipboard-list"></i></span>
+                    <span class="btn-innertext">Lihat Laporan Logistik</span>
                   </a> -->
                 </div>
               </div>
@@ -90,7 +90,7 @@
                     <div class="nav-wrapper">
                         <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-icons-text" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link mb-sm-3 mb-md-0 active" id="tabs-icons-text-1-tab" data-toggle="tab" href="#tabs-icons-text-1" role="tab" aria-controls="tabs-icons-text-1" aria-selected="true"><i class="ni ni-single-copy-04 mr-2"></i>Laporan</a>
+                                <a class="nav-link mb-sm-3 mb-md-0 active" id="tabs-icons-text-1-tab" data-toggle="tab" href="#tabs-icons-text-1" role="tab" aria-controls="tabs-icons-text-1" aria-selected="true"><i class="ni ni-single-copy-04 mr-2"></i>Grafik Top 3 Jumlah Kebutuhan Logistik Yang Belum Terpenuhi</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-2-tab" data-toggle="tab" href="#tabs-icons-text-2" role="tab" aria-controls="tabs-icons-text-2" aria-selected="false"><i class="ni ni-map-big mr-2"></i>Peta Persebaran</a>
@@ -103,27 +103,36 @@
                                 <div class="tab-pane fade show active" id="tabs-icons-text-1" role="tabpanel" aria-labelledby="tabs-icons-text-1-tab">
                                   <div class="table-responsive">
                                     <table class="table">
-                                        <tr>
-                                            <th>No</th>
-                                            <!-- <th>ID</th> -->
-                                            <th>Pelapor</th>
-                                            <th>Kontak</th>
-                                            <th>Lokasi</th>
-                                            <th>Kebutuhan</th>
-                                            <th>Catatan</th>
-                                        </tr>
-                                        <?php $i=0;?>
-                                        @foreach ($laporan as $product)
-                                        <tr>
-                                            <td>{{ ++$i }}</td>
-                                            <!-- <td>{{ $product->id }}</td> -->
-                                            <td>{{ $product->nama_pelapor }}</td>
-                                            <td>{{ $product->kontak }}</td>
-                                            <td>{{ $product->lokasi_pengungsian }}</td>
-                                            <td>{{ $product->kategori }}</td>
-                                            <td>{{ substr($product->catatan,0,30) }}...</td>
-                                        </tr>
-                                        @endforeach
+
+
+
+                                        <!-- chart -->
+                                          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                                            <div id="top_x_div" style="width: 900px; height: 500px;"></div>
+                                          <script type="text/javascript">
+                                           var analytics = <?php echo $namaLogistik; ?>
+
+                                           google.charts.load('current', {'packages':['bar']});
+
+                                           google.charts.setOnLoadCallback(drawStuff1);
+
+                                           function drawStuff1()
+                                           {
+                                            var data = google.visualization.arrayToDataTable(analytics);
+                                            var options = {
+                                            bars : 'vertical',
+                                            legend:{position:'none'},
+                                            hAxis: {format: 'short'}
+                                           };
+
+                                           var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+                                           chart.draw(data, options);
+
+                                           }
+                                          </script>
+
+
+
                                     </table>
                                   </div>
                                 </div>
@@ -133,6 +142,7 @@
                             </div>
                         </div>
                     </div>
+
                   </div>
                 </div>
               </div>
@@ -142,6 +152,8 @@
         </div>
       </div>
     </section>
+
+
 
      <section class="section section-lg bg-gradient-default">
        <div class="container pt-sm pb-100">

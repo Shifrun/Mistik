@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 19, 2018 at 01:02 AM
--- Server version: 10.1.28-MariaDB
--- PHP Version: 7.1.10
+-- Generation Time: Mar 21, 2019 at 10:54 AM
+-- Server version: 10.1.36-MariaDB
+-- PHP Version: 7.2.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -203,8 +203,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `us
 (1, 'innofiction', 'innofiction@inno.com', NULL, '$2y$10$v.XG7qmgTp3XGGrBlu8dwutwRCrtIimnufJa5ocBpekzo0mRwkCj6', 'Relawan', 'vhnJEIL7t3tL4Rw0LXD3gPaVTtP8IwzOcxscWNn81xkNCDYu8gGEHd9CpNZp', '2018-12-06 08:41:10', '2018-12-06 08:41:10'),
 (2, 'John Doe', 'john@doe.com', NULL, '$2y$10$Wy4z6XVVTd8y4wICg0CTqOOQI1naEDzIminiAZUHV3S0FvB73w7Hi', 'Relawan', 'Ti3gnQdYCSgk9NkldBstoaWdrFzmyAQK0T1V0B6Web2RaeBpIyVsIKKfj0pA', '2018-12-14 21:20:47', '2018-12-14 21:20:47'),
 (5, 'James Doe', 'james@doe.com', NULL, '$2y$10$nZwHhX9PHXAjhodO4TbHaebGc/OQCwZkD/alOa6g5yeiAJqdZJf0C', 'Donatur', 'GOpuoF6rQcaMOyqrEKWJG4IRj3WjimkvCih3tDufu6qzMtMQpjwOKiTvUKo9', '2018-12-14 21:34:06', '2018-12-14 21:34:06'),
-(6, 'BDPB', 'bdpb@gov.id', NULL, '$2y$10$Bymu1Vu9a85CD6ekArZI5.ZsTfPD0O9NFbEiF1KniJWC5n.ywZF7W', 'BPBD', 'dT19lPlpZZwizm2T69voruyE1L8Av8JeaK9VrYG5XAmQ6r924RK1jPOvalhH', '2018-12-14 21:49:41', '2018-12-14 21:49:41'),
-(8, 'BPBD', 'bpbd@gov.id', NULL, '$2y$10$awgUNE96WTTMpLLuDHNTw.1joSW1qa/FYaaKVzuBAtd6s9EcXrSYG', 'BPBD', 'WZkLXv2aikHkXCSKQkWObwFCA6erRee2ACD9BZdfUkD1UlxEMKgo5GJU9rBo', '2018-12-14 22:22:22', '2018-12-14 22:22:22');
+(9, 'BPBD', 'bpbd@gov.id', NULL, '$2y$10$6NTODIZc8Ux1VVgd598A0OLtKK6hNISNKliK30aoqPGKzvi54zrqS', 'BPBD', NULL, '2019-03-21 02:53:02', '2019-03-21 02:53:02');
 
 --
 -- Indexes for dumped tables
@@ -296,7 +295,7 @@ ALTER TABLE `pengungsis`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

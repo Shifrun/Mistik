@@ -19,9 +19,8 @@ class LaporanController extends Controller
         //
         $laporan = laporan::latest()->paginate(5);
         $laporan = DB::table('laporans')
-                      ->join('kategoris','laporans.kategori_kebutuhan','=','kategoris.id')
                       ->join('pengungsis','laporans.lokasi','=','pengungsis.id')
-                      ->select('laporans.*','kategoris.kategori as kategori','pengungsis.nama_pengungsian as lokasi_pengungsian')
+                      ->select('laporans.*','pengungsis.nama_pengungsian as lokasi_pengungsian')
                       ->paginate('5');
 
         return view('laporan.index',compact('laporan'))->with('i',(request()->input('page',1) - 1) * 5);
@@ -52,6 +51,8 @@ class LaporanController extends Controller
           'kontak' => 'required',
           'lokasi' => 'required',
           'kategori_kebutuhan' => 'required',
+          'stok_kebutuhan' => 'required',
+          'kategori_logistik' => 'required',
           'catatan' => 'required',
         ]);
 
@@ -67,6 +68,8 @@ class LaporanController extends Controller
           'kontak' => 'required',
           'lokasi' => 'required',
           'kategori_kebutuhan' => 'required',
+          'stok_kebutuhan' => 'required',
+            'kategori_logistik' => 'required',
           'catatan' => 'required',
         ]);
 
@@ -113,7 +116,9 @@ class LaporanController extends Controller
           'nama_pelapor' => 'required',
           'kontak' => 'required',
           'lokasi' => 'required',
+          'stok_kebutuhan' => 'required',
           'kategori_kebutuhan' => 'required',
+            'kategori_logistik' => 'required',
           'catatan' => 'required',
         ]);
 

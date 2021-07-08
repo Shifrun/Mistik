@@ -75,13 +75,13 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="fas fa-box"></i></span>
                     </div>
-                    <!-- <input class="form-control" name="kategori_kebutuhan" placeholder="Kebutuhan Logistik" type="text"> -->
-                    <select class="form-control" name="kategori_kebutuhan">
+                    <input class="form-control" name="kategori_kebutuhan" placeholder="Kebutuhan Logistik" type="text">
+                    <!-- <select class="form-control" name="kategori_kebutuhan">
                       <option value="">Pilih Kebutuhan</option>
                       @foreach ($kategori as $product)
                       <option value="{{$product->id}}">{{$product->kategori}}</option>
                       @endforeach
-                    </select>
+                    </select> -->
                   </div>
                 </div>
                 <div class="form-group mb-4">

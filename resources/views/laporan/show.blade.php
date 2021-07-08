@@ -37,6 +37,12 @@
               </div>
               <div class="col-xs-12 col-sm-12 col-md-12">
                   <div class="form-group">
+                      <strong>Stok :</strong>
+                      {{ $laporan->stok_kebutuhan }}
+                  </div>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-12">
+                  <div class="form-group">
                       <strong>Catatan :</strong>
                       {{ $laporan->catatan }}
                   </div>

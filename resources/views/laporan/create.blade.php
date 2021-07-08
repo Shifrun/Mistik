@@ -40,17 +40,31 @@
                       <div class="form-group">
                           <strong>Lokasi :</strong>
                           <input type="text" class="form-control" name="lokasi" placeholder="Lokasi">
+
                       </div>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-12">
                       <div class="form-group">
-                          <strong>Kategori Kebutuhan :</strong>
-                          <select class="form-control" name="kategori_kebutuhan">
+                          <strong>Laporan Kebutuhan :</strong>
+                          <!-- <select class="form-control" name="kategori_kebutuhan">
                             <option value="">Pilih Kebutuhan</option>
                             @foreach ($kategori as $product)
                             <option value="{{$product->id}}">{{$product->kategori}}</option>
                             @endforeach
-                          </select>
+                          </select> -->
+                          <input type="text" class="form-control" name="kategori_kebutuhan" placeholder="Kebutuhan">
+                      </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-12">
+                      <div class="form-group">
+                          <strong>Stok :</strong>
+                        <input type="text" class="form-control" name="stok_kebutuhan" placeholder="stok">
+                      </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-12">
+                      <div class="form-group">
+                          <strong>kategori :</strong>
+                        <input type="text" class="form-control" name="kategori_logistik" placeholder="kategori">
                       </div>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-12">

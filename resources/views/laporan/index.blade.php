@@ -71,6 +71,7 @@ for (i = 0; i < tr.length; i++) {
                       <th>Kontak</th>
                       <th>Lokasi</th>
                       <th>Kebutuhan</th>
+											<th>Stok</th>
                       <th>Catatan</th>
                       <th width="280px">Action</th>
                   </tr>
@@ -81,7 +82,8 @@ for (i = 0; i < tr.length; i++) {
                       <td>{{ $product->nama_pelapor }}</td>
                       <td>{{ $product->kontak }}</td>
                       <td>{{ $product->lokasi_pengungsian }}</td>
-                      <td>{{ $product->kategori }}</td>
+                      <td>{{ $product->kategori_kebutuhan }}</td>
+											<td>{{$product->stok_kebutuhan}}</td>
                       <td>{{ $product->catatan }}</td>
                       <td>
                           <form action="{{ route('laporan.destroy',$product->id) }}" method="POST">
